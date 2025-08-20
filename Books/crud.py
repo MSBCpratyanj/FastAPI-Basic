@@ -3,10 +3,11 @@ from . import models
 from . import schemas
 
 def create_book(db: Session, book:schemas.BookCreate):
-    db.add(book)
+    db_book = models.Book(**book.dict())
+    db.add(db_book)
     db.commit()
-    db.refresh(book)
-    return book
+    db.refresh(db_book)
+    return db_book
     
 def get_books(db:Session,skip:int = 0, limit:int = 0):
     return db.query(models.Book).offset(skip).limit(limit).all()
