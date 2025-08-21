@@ -1,6 +1,5 @@
 from Database.database import base
 from sqlalchemy.orm import Mapped, mapped_column
-from  sqlalchemy.schema import MetaData
 
 class Book(base):
     __tablename__ = "books"
