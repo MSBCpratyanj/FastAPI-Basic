@@ -14,8 +14,8 @@ from database.database import get_db
 from user.models import User
 from user.crud import get_user_by_username
 
-SECRET_KEY = "afhafaskfskfhkvhsahihvihvir5gg1g2fghghfg5hfg"
-ALGORITHM = 'HS256'
+SECRET_KEY = config("JWT_SECRET_KEY")
+ALGORITHM = config("ALGORITHM")
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/auth/token")
 
@@ -55,7 +55,7 @@ async def get_current_user(token: Annotated[str, Depends(oauth2_scheme)], db:Ses
         
     except InvalidTokenError:
         raise credentials_exception
-    user = get_user_by_username(db, username = token_data.username)
+    user = get_user_by_username(db, username = token_data.username)#type:ignore
     if user is None:
         raise credentials_exception
     return user

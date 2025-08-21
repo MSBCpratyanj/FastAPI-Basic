@@ -1,11 +1,13 @@
 from fastapi import HTTPException,status,APIRouter,Depends
 from fastapi.exceptions import HTTPException
 from sqlalchemy.orm import Session
+
+from auth.crud import get_current_active_user, get_current_user
 from . import models,schemas,crud
 from database import database 
 import asyncio
 
-router = APIRouter(prefix="/Books",tags=["Books"])
+router = APIRouter(prefix="/Books",tags=["Books"],dependencies=[Depends(get_current_user)])
 get_db = database.get_db
 
 async def send_mail(book_title:str):
