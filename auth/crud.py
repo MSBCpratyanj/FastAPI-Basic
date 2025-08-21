@@ -10,9 +10,9 @@ from sqlalchemy.orm import Session
 from fastapi import Depends, HTTPException, status
 from datetime import datetime, timedelta, timezone
 import jwt
-from Database.database import get_db
-from User.models import User
-from User.crud import get_user_by_username
+from database.database import get_db
+from user.models import User
+from user.crud import get_user_by_username
 
 SECRET_KEY = "afhafaskfskfhkvhsahihvihvir5gg1g2fghghfg5hfg"
 ALGORITHM = 'HS256'

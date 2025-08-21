@@ -2,7 +2,7 @@ from fastapi import HTTPException,status,APIRouter,Depends
 from fastapi.exceptions import HTTPException
 from sqlalchemy.orm import Session
 from . import models,schemas,crud
-from Database import database 
+from database import database 
 import asyncio
 
 router = APIRouter(prefix="/Books",tags=["Books"])

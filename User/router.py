@@ -3,10 +3,10 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
 from auth.crud import get_current_active_user
-from Database.database import get_db
-from User.models import User
-from User.schemas import UserSchema, UserCreate
-from User.crud import get_users, create_user, get_user, delete_user
+from database.database import get_db
+from user.models import User
+from user.schemas import UserSchema, UserCreate
+from user.crud import get_users, create_user, get_user, delete_user
 
 user_router = APIRouter(
     prefix='/users',

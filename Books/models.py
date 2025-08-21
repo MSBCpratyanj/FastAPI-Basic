@@ -1,4 +1,4 @@
-from Database.database import base
+from database.database import base
 from sqlalchemy.orm import Mapped, mapped_column
 
 class Book(base):

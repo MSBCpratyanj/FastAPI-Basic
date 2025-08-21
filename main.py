@@ -1,12 +1,12 @@
 from fastapi import FastAPI
 from fastapi.responses import RedirectResponse
-from  sqlalchemy.schema import MetaData
-from Database.database import base,engine
+from sqlalchemy.schema import MetaData
+from database.database import base,engine
 from starlette.middleware.cors import CORSMiddleware
 
-from Books.routers import  router as books_router
+from books.routers import  router as books_router
 from auth.router import auth_router
-from User.router import user_router
+from user.router import user_router
 
 base.metadata.create_all(bind=engine)
 openapi_tags = [
